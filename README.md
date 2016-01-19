@@ -1,4 +1,4 @@
-# Optimize MBTiles
+# optimize-mbtiles [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lukasmartinelli/optimize-mbtiles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lukasmartinelli/optimize-mbtiles/?branch=master) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
 
 If you are using tilelive and a tile server which supports `maskLevel`
 you can remove save a lot of redundant data by backfilling missing high zoom
@@ -12,21 +12,6 @@ You need **Python 2** installed on your system due to limitations of [mbutil](ht
 git clone https://github.com/lukasmartinelli/optimize-mbtiles.git
 cd optimize-mbtiles
 pip install -r requirements.txt
-```
-
-## Usage
-
-```bash
-Usage:
-  optimize.py check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
-  optimize.py (-h | --help)
-  optimize.py --version
-
-Options:
-  -h --help                 Show this screen.
-  --version                 Show version.
-  -z=<mask_level>           Minimum zoom level where data should still exist
-  --scheme=<scheme>         Tiling scheme of the tiles can be either xyz or tms [default: tms]
 ```
 
 ## Theory
@@ -49,3 +34,19 @@ then receive the data from `8/100/101` without the need of duplicating the data
 across multiple zoom levels.
 
 ![Subpyramid](subpyramid.png)
+
+
+## Usage
+
+```bash
+Usage:
+  optimize.py check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+  optimize.py (-h | --help)
+  optimize.py --version
+
+Options:
+  -h --help                 Show this screen.
+  --version                 Show version.
+  -z=<mask_level>           Minimum zoom level where data should still exist
+  --scheme=<scheme>         Tiling scheme of the tiles can be either xyz or tms [default: tms]
+```

@@ -1,4 +1,4 @@
-# mbtoolbox [![Build Status](https://travis-ci.org/lukasmartinelli/optimize-mbtiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/optimize-mbtiles) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lukasmartinelli/optimize-mbtiles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lukasmartinelli/optimize-mbtiles/?branch=master) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
+# mbtoolbox [![Build Status](https://travis-ci.org/lukasmartinelli/mbtoolbox.svg?branch=master)](https://travis-ci.org/lukasmartinelli/mbtoolbox) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lukasmartinelli/mbtoolbox/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lukasmartinelli/mbtoolbox/?branch=master) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
 
 <img align="right" alt="mbtoolbox" src="toolbox.png" />
 

@@ -2,7 +2,7 @@
 """Remove descendant tiles below a parent tile with specified mask level.
 Usage:
   optimize.py check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
-  optimize.py optimize <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+  optimize.py remove <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
   optimize.py (-h | --help)
   optimize.py --version
 
@@ -143,7 +143,7 @@ if __name__ == '__main__':
             int(args['-z']),
             args['--scheme']
         ))
-    if args.get('optimize'):
+    if args.get('remove'):
         remove_subpyramids(
             args['<mbtiles_file>'],
             int(args['-z']),

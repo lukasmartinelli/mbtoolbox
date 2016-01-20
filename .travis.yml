@@ -5,5 +5,5 @@ install: "pip install -r requirements.txt"
 script:
   - python optimize.py check -z 8 examples/water_125_188_z8-z14.mbtiles || true
   - python optimize.py check -z 8 examples/optimized_water_125_188_z8.mbtiles
-  - python optimize.py optimize -z 8 examples/water_125_188_z8.mbtiles > /dev/null
+  - python optimize.py remove -z 8 examples/water_125_188_z8.mbtiles > /dev/null
   - python optimize.py check -z 8 examples/water_125_188_z8-z14.mbtiles

@@ -36,7 +36,7 @@ all the references to the binary image data. If you render vector tiles of the e
 to a file with 70GB this can decrease the size by over 12GB.
 
 ```bash
-./optimize.py optimize <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+./optimize.py remove <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
 ```
 
 ## Theory

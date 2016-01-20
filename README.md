@@ -1,6 +1,6 @@
 # mbtoolbox [![Build Status](https://travis-ci.org/lukasmartinelli/mbtoolbox.svg?branch=master)](https://travis-ci.org/lukasmartinelli/mbtoolbox) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lukasmartinelli/mbtoolbox/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lukasmartinelli/mbtoolbox/?branch=master) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
 
-<img align="right" alt="mbtoolbox" src="toolbox.png" />
+<img align="right" alt="mbtoolbox" src="subpyramid.png" />
 
 A **MBTiles introspection tool** for optimizing and verifying MBTiles files.
 

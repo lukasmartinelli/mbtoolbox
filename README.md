@@ -15,7 +15,7 @@ You need Python 2 or Python 3 installed on your system.
 ```bash
 git clone https://github.com/lukasmartinelli/mbtoolbox.git
 cd mbtoolbox
-pip install .
+pip install --process-dependency-links .
 ```
 
 ## Usage

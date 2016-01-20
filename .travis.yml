@@ -3,7 +3,8 @@ python:
   - "2.7"
   - "3.4"
   - "3.5"
-install: "pip install -e ."
+install:
+  - pip install --process-dependency-links .
 script:
   - mboptimize check -z 8 examples/water_125_188_z8-z14.mbtiles || true
   - mbverify missing examples/water_125_188_z8-z14.mbtiles 125 188 -z 8 -Z 14

@@ -11,7 +11,7 @@ Options:
   -z=<mask_level>           Minimum zoom level where data should still exist
   --scheme=<scheme>         Tiling scheme of the tiles can be either xyz or tms [default: tms]
 """
-from collections import defaultdict, namedtuple, Counter
+from collections import namedtuple, Counter
 from docopt import docopt
 
 import sys
@@ -20,6 +20,7 @@ import mbutil
 import mercantile
 
 TileSize = namedtuple('TileSize', ['x', 'y', 'z', 'size'])
+
 
 class MBTiles:
     def __init__(self, mbtiles_file, scheme):
@@ -39,7 +40,6 @@ class MBTiles:
             if self.scheme == 'tms':
                 y = mbutil.flip_y(z, y)
             yield mercantile.Tile(x, y, z)
-
 
     def inspect_tile(self, x, y, z):
         if self.scheme == 'tms':
@@ -89,6 +89,7 @@ def check_masked_tiles(mbtiles_file, maskLevel, scheme):
     for tile in tiles:
         print('{}/{}/{}\t{}'.format(tile.z, tile.x, tile.y, 'OPTIMIZABLE'))
     return len(tiles)
+
 
 if __name__ == '__main__':
     args = docopt(__doc__, version='0.1')

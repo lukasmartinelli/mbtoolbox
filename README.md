@@ -14,10 +14,29 @@ pip install -r requirements.txt
 
 ## Usage
 
+### Check MBTiles for Redundancy
+
 Check if a file contains any removable redundant subpyramids.
 
 ```bash
 ./optimize.py check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+```
+
+You get back a list of all optimizable subpyramids.
+
+```bash
+8/125/188   OPTIMIZABLE
+```
+
+### Remove subpyramids
+
+Once you know your file contains redundancy you can remove the unnecessary tiles.
+Removing subpyramids will gain a lot of space in big files since you no longer need to store
+all the references to the binary image data. If you render vector tiles of the entire wolrd
+to a file with 70GB this can decrease the size by over 12GB.
+
+```bash
+./optimize.py optimize <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
 ```
 
 ## Theory

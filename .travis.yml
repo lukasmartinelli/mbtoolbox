@@ -1,0 +1,7 @@
+language: python
+python:
+  - "2.7"
+install: "pip install -r requirements.txt"
+script:
+  - ! python optimize.py check -z 8 python examples/water_125_188_z8-z14.mbtiles
+  - ! python optimize.py check -z 8 python examples/optimized_water_125_188_z8.mbtiles

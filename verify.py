@@ -73,8 +73,9 @@ def all_descendant_tiles(x, y, zoom, max_zoom):
     if zoom < max_zoom:
         for child_tile in mercantile.children(x, y, zoom):
             yield child_tile
-            yield from all_descendant_tiles(child_tile.x, child_tile.y,
-                                            child_tile.z, max_zoom)
+            for desc_tile in all_descendant_tiles(child_tile.x, child_tile.y,
+                                                  child_tile.z, max_zoom):
+                yield desc_tile
 
 
 def redundant_tiles(mbtiles, required_tiles):

@@ -13,9 +13,9 @@ A **MBTiles introspection tool** for optimizing and verifying MBTiles files.
 You need Python 2 or Python 3 installed on your system.
 
 ```bash
-git clone https://github.com/lukasmartinelli/optimize-mbtiles.git
-cd optimize-mbtiles
-pip install -r requirements.txt
+git clone https://github.com/lukasmartinelli/mbtoolbox.git
+cd mbtoolbox
+pip install .
 ```
 
 ## Usage

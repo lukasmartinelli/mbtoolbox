@@ -32,7 +32,8 @@ setup(
     packages=find_packages(exclude=[]),
     include_package_data=True,
     zip_safe=False,
-    install_requires=['docopt==0.6.2', 'mercantile==0.8.3', 'humanize==0.5.1'],
-    dependency_links = ['git://github.com/mapbox/mbutil.git@master#egg=mbutil'],
+    dependency_links = ['https://github.com/mapbox/mbutil/tarball/master#egg=mbutil'],
+    install_requires=['docopt==0.6.2', 'mercantile==0.8.3',
+                      'humanize==0.5.1', 'mbutil'],
     scripts = ['bin/mbverify', 'bin/mboptimize']
 )

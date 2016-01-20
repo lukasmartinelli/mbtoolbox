@@ -1,6 +1,8 @@
-# optimize-mbtiles [![Build Status](https://travis-ci.org/lukasmartinelli/optimize-mbtiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/optimize-mbtiles) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lukasmartinelli/optimize-mbtiles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lukasmartinelli/optimize-mbtiles/?branch=master) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
+# mbtoolbox [![Build Status](https://travis-ci.org/lukasmartinelli/optimize-mbtiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/optimize-mbtiles) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lukasmartinelli/optimize-mbtiles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lukasmartinelli/optimize-mbtiles/?branch=master) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
 
-A MBTiles introspection tool for optimizing and verifying MBTiles files.
+<img align="right" alt="mbtoolbox" src="toolbox.png" />
+
+A **MBTiles introspection tool** for optimizing and verifying MBTiles files.
 
 - Save space by removing redundant subpyramids
 - Ensure size of tiles is below a threshold
@@ -25,7 +27,7 @@ If you are using [tilelive-vector](https://github.com/mapbox/tilelive-vector) or
 Check if a file contains any removable redundant subpyramids.
 
 ```bash
-./optimize.py check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+mboptimize check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
 ```
 
 You get back a list of all optimizable subpyramids.
@@ -42,7 +44,7 @@ all the references to the binary image data. If you render vector tiles of the e
 to a file with 70GB this can decrease the size by over 12GB.
 
 ```bash
-./optimize.py remove <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+mboptimize remove <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
 ```
 
 ### Verify Size of MBTiles
@@ -50,7 +52,7 @@ to a file with 70GB this can decrease the size by over 12GB.
 Check if a file contains any tiles larger than 500KB.
 
 ```bash
-./verify.py size <mbtiles_file> -s=500000
+mbverify size <mbtiles_file> -s=500000
 ```
 
 You get back a list of all tiles larger than 500KB.
@@ -66,7 +68,7 @@ Given you have a MBTiles file you want to verify that that
 all tile data for the XYZ subpyramid `8/125/188` down to zoom level 14 is present.
 
 ```bash
-./verify.py missing <mbtiles_file> 125 188 -z 8 -Z 14
+mbverify missing <mbtiles_file> 125 188 -z 8 -Z 14
 ```
 
 ### Verify Compactness of a Subpyramid
@@ -76,7 +78,7 @@ tile data of the XYZ subpyramid `8/125/188` down to zoom level 14 is present.
 Any additional data is treated as redundant.
 
 ```bash
-./verify.py redundant <mbtiles_file> 125 188 -z 8 -Z 14
+mbverify redundant <mbtiles_file> 125 188 -z 8 -Z 14
 ```
 
 ## Mask Level

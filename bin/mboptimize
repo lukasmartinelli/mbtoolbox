@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+"""
+Usage:
+  mboptimize check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+  mboptimize remove <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+  mboptimize (-h | --help)
+  mboptimize --version
+
+Options:
+  -h --help                 Show this screen.
+  --version                 Show version.
+  -z=<mask_level>           Minimum zoom level where data should still exist
+  --scheme=<scheme>         Tiling scheme of the tiles can be either xyz or tms [default: tms]
+"""
+import sys
+import mbtoolbox
+from docopt import docopt
+from mbtoolbox.optimize import check_masked_tiles, remove_subpyramids
+
+
+if __name__ == '__main__':
+    args = docopt(__doc__, version=mbtoolbox.__version__)
+    if args.get('check'):
+        sys.exit(check_masked_tiles(
+            args['<mbtiles_file>'],
+            int(args['-z']),
+            args['--scheme']
+        ))
+    if args.get('remove'):
+        remove_subpyramids(
+            args['<mbtiles_file>'],
+            int(args['-z']),
+            args['--scheme']
+        )

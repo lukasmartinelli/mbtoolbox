@@ -7,6 +7,9 @@ install: "pip install -r requirements.txt"
 script:
   - ./optimize.py check -z 8 examples/water_125_188_z8-z14.mbtiles || true
   - ./verify.py missing examples/water_125_188_z8-z14.mbtiles 125 188 -z 8 -Z 14
+  - ./verify.py redundant examples/water_125_188_z8-z14.mbtiles 125 188 -z 8 -Z 14
   - ./optimize.py check -z 8 examples/optimized_water_125_188_z8.mbtiles
   - ./optimize.py remove -z 8 examples/water_125_188_z8-z14.mbtiles > /dev/null
+  - ./verify.py missing examples/water_125_188_z8-z14.mbtiles 125 188 -z 8 -Z 14 || true
+  - ./verify.py size -s 500000 examples/water_125_188_z8-z14.mbtiles
   - ./optimize.py check -z 8 examples/water_125_188_z8-z14.mbtiles

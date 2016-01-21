@@ -2,7 +2,7 @@
 
 <img align="right" alt="mbtoolbox" src="subpyramid.png" />
 
-A **MBTiles introspection tool** for optimizing and verifying MBTiles files.
+A **MBTiles introspection tool** for optimizing and verifying [MBTiles](https://github.com/mapbox/mbtiles-spec) files.
 
 - Save space by removing redundant subpyramids
 - Ensure size of tiles is below a threshold
@@ -24,10 +24,10 @@ pip install --process-dependency-links .
 
 If you are using [tilelive-vector](https://github.com/mapbox/tilelive-vector) or a tile server like [tileserver-php](https://github.com/klokantech/tileserver-php/) which supports `maskLevel`  you can **save a lot of redundant data in your MBTiles file** by backfilling missing high zoom levels with data from low zoom levels. This approach is used at [osm2vectortiles](github.com/osm2vectortiles/osm2vectortiles) to decrease the size of the MBTiles downloads.
 
-Check if a file contains any removable redundant subpyramids.
+Check if a file contains any removable redundant subpyramids for a `maskLevel` of `8`.
 
 ```bash
-mboptimize check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+mboptimize check <mbtiles_file> -z 8
 ```
 
 You get back a list of all optimizable subpyramids.
@@ -44,7 +44,7 @@ all the references to the binary image data. If you render vector tiles of the e
 to a file with 70GB this can decrease the size by over 12GB.
 
 ```bash
-mboptimize remove <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+mboptimize remove <mbtiles_file> -z 8
 ```
 
 ### Verify Size of MBTiles
@@ -62,7 +62,7 @@ You get back a list of all tiles larger than 500KB.
 14/8025/12095   1.1 Mbyte
 ```
 
-### Verify Completness of a Subpyramid
+### Verify Subpyramid contains all Tiles
 
 Given you have a MBTiles file you want to verify that that
 all tile data for the XYZ subpyramid `8/125/188` down to zoom level 14 is present.
@@ -71,7 +71,7 @@ all tile data for the XYZ subpyramid `8/125/188` down to zoom level 14 is presen
 mbverify missing <mbtiles_file> 125 188 -z 8 -Z 14
 ```
 
-### Verify Compactness of a Subpyramid
+### Verify Subpyramid has no additional Tiles
 
 Given you have a MBTiles file you want to verify that **only** the exact
 tile data of the XYZ subpyramid `8/125/188` down to zoom level 14 is present.

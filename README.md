@@ -26,7 +26,7 @@ This is primarily thought for purging too large tiles (> 500KB) from a MBTiles
 file to upload it to Mapbox Studio for creating a Mapbox GL stylesheet.
 
 ```bash
-mboptimize size <mbtiles_file> -s=500000
+mboptimize size <mbtiles_file> -s 500000
 ```
 
 ### Verify Size of MBTiles
@@ -34,7 +34,7 @@ mboptimize size <mbtiles_file> -s=500000
 Check if a file contains any tiles larger than 500KB.
 
 ```bash
-mbverify size <mbtiles_file> -s=500000
+mbverify size <mbtiles_file> -s 500000
 ```
 
 You get back a list of all tiles larger than 500KB.

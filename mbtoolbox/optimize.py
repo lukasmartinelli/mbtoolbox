@@ -53,3 +53,15 @@ def check_masked_tiles(mbtiles_file, maskLevel, scheme):
     for tile in tiles:
         print('{}/{}/{}\t{}'.format(tile.z, tile.x, tile.y, 'OPTIMIZABLE'))
     return len(tiles)
+
+
+def purge_tiles_by_size(mbtiles_file, max_size, scheme):
+    mbtiles = MBTiles(mbtiles_file, scheme)
+    oversized_tiles = mbtiles.tiles_by_size(max_size)
+    mbtiles.remove_tiles(oversized_tiles)
+
+    for tile in oversized_tiles:
+        print('{}/{}/{}\t{}'.format(
+            tile.z, tile.x, tile.y,
+            humanize.naturalsize(tile.size))
+        )

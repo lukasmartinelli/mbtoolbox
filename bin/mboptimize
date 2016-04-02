@@ -3,19 +3,22 @@
 Usage:
   mboptimize check <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
   mboptimize remove <mbtiles_file> -z=<mask_level> [--scheme=<scheme>]
+  mboptimize size <mbtiles_file> -s=<max_size> [--scheme=<scheme>]
   mboptimize (-h | --help)
   mboptimize --version
 
 Options:
   -h --help                 Show this screen.
   --version                 Show version.
+  -s=<max_size>             Maximum size of tile data in bytes
   -z=<mask_level>           Minimum zoom level where data should still exist
   --scheme=<scheme>         Tiling scheme of the tiles can be either xyz or tms [default: tms]
 """
 import sys
 import mbtoolbox
 from docopt import docopt
-from mbtoolbox.optimize import check_masked_tiles, remove_subpyramids
+from mbtoolbox.optimize import (check_masked_tiles, remove_subpyramids,
+                                purge_tiles_by_size)
 
 
 if __name__ == '__main__':
@@ -30,5 +33,11 @@ if __name__ == '__main__':
         remove_subpyramids(
             args['<mbtiles_file>'],
             int(args['-z']),
+            args['--scheme']
+        )
+    if args.get('size'):
+        purge_tiles_by_size(
+            args['<mbtiles_file>'],
+            int(args['-s']),
             args['--scheme']
         )

@@ -20,6 +20,30 @@ pip install --process-dependency-links .
 
 ## Usage
 
+### Remove large tiles from MBTiles
+
+This is primarily thought for purging too large tiles (> 500KB) from a MBTiles
+file to upload it to Mapbox Studio for creating a Mapbox GL stylesheet.
+
+```bash
+mboptimize size <mbtiles_file> -s=500000
+```
+
+### Verify Size of MBTiles
+
+Check if a file contains any tiles larger than 500KB.
+
+```bash
+mbverify size <mbtiles_file> -s=500000
+```
+
+You get back a list of all tiles larger than 500KB.
+
+```bash
+14/8024/12095   506 KByte
+14/8025/12095   1.1 Mbyte
+```
+
 ### Check MBTiles for Redundancy
 
 If you are using [tilelive-vector](https://github.com/mapbox/tilelive-vector) or a tile server like [tileserver-php](https://github.com/klokantech/tileserver-php/) which supports `maskLevel`  you can **save a lot of redundant data in your MBTiles file** by backfilling missing high zoom levels with data from low zoom levels. This approach is used at [osm2vectortiles](github.com/osm2vectortiles/osm2vectortiles) to decrease the size of the MBTiles downloads.
@@ -45,21 +69,6 @@ to a file with 70GB this can decrease the size by over 12GB.
 
 ```bash
 mboptimize remove <mbtiles_file> -z 8
-```
-
-### Verify Size of MBTiles
-
-Check if a file contains any tiles larger than 500KB.
-
-```bash
-mbverify size <mbtiles_file> -s=500000
-```
-
-You get back a list of all tiles larger than 500KB.
-
-```bash
-14/8024/12095   506 KByte
-14/8025/12095   1.1 Mbyte
 ```
 
 ### Verify Subpyramid contains all Tiles

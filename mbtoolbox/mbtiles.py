@@ -4,15 +4,18 @@ methods and modifications for the tiles table.
 """
 
 from collections import namedtuple
-import mbutil
 import hashlib
 
 TileSize = namedtuple('TileSize', ['x', 'y', 'z', 'size'])
 
 
+def flip_y(zoom, y):
+    return (2**zoom-1) - y
+
+
 class MBTiles:
     def __init__(self, mbtiles_file, scheme):
-        self.conn = mbutil.mbtiles_connect(mbtiles_file)
+        self.conn = sqlite3.connect(mbtiles_file)
         self.scheme = scheme
         self._tiles_view = self.using_tiles_view()
 
@@ -35,7 +38,7 @@ class MBTiles:
             size = tile[2]
 
             if self.scheme == 'tms':
-                y = mbutil.flip_y(z, y)
+                y = flip_y(z, y)
             yield TileSize(x, y, z, size)
 
     def tiles_by_size(self, max_size):
@@ -50,7 +53,7 @@ class MBTiles:
             size = tile[3]
 
             if self.scheme == 'tms':
-                y = mbutil.flip_y(z, y)
+                y = flip_y(z, y)
             yield TileSize(x, y, z, size)
 
     def all_tiles(self):
@@ -62,12 +65,12 @@ class MBTiles:
             size = tile[3]
 
             if self.scheme == 'tms':
-                y = mbutil.flip_y(z, y)
+                y = flip_y(z, y)
             yield TileSize(x, y, z, size)
 
     def tile_exists(self, x, y, z):
         if self.scheme == 'tms':
-            y = mbutil.flip_y(z, y)
+            y = flip_y(z, y)
         query = (
             'select count(*) from tiles where zoom_level={} and tile_column={} and tile_row={}'
             .format(z, x, y)
@@ -82,7 +85,7 @@ class MBTiles:
 
     def remove_tile(self, x, y, z):
         if self.scheme == 'tms':
-            y = mbutil.flip_y(z, y)
+            y = flip_y(z, y)
 
         if self._tiles_view:
             delete_query = (
@@ -99,7 +102,7 @@ class MBTiles:
 
     def inspect_tile(self, x, y, z):
         if self.scheme == 'tms':
-            y = mbutil.flip_y(z, y)
+            y = flip_y(z, y)
 
         query = (
             'select tile_data from tiles where zoom_level={} ' +

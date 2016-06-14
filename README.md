@@ -13,9 +13,7 @@ A **MBTiles introspection tool** for optimizing and verifying [MBTiles](https://
 You need Python 2 or Python 3 installed on your system.
 
 ```bash
-git clone https://github.com/lukasmartinelli/mbtoolbox.git
-cd mbtoolbox
-pip install --process-dependency-links .
+pip install git+https://github.com/lukasmartinelli/mbtoolbox.git
 ```
 
 ## Usage

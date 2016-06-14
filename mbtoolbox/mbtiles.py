@@ -5,6 +5,7 @@ methods and modifications for the tiles table.
 
 from collections import namedtuple
 import hashlib
+import sqlite3
 
 TileSize = namedtuple('TileSize', ['x', 'y', 'z', 'size'])
 
